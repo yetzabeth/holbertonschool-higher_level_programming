@@ -1,0 +1,52 @@
+-------------------------------------------------------------------------------
+
+>>> text_indentation = __import__('5-text_indentation').text_indentation
+
+-------------------------------------------------------------------------------
+
+>>> text_indentation('hola. como estas? Tu nombre: Yetzabeth')
+hola.
+<BLANKLINE>
+como estas?
+<BLANKLINE>
+Tu nombre:
+<BLANKLINE>
+Yetzabeth
+
+-------------------------------------------------------------------------------
+
+>>> text_indentation('hola. como estas? Tu nombre:')
+hola.
+<BLANKLINE>
+como estas?
+<BLANKLINE>
+Tu nombre:
+<BLANKLINE>
+
+-------------------------------------------------------------------------------
+
+>>> text_indentation(1)
+Traceback (most recent call last):
+...
+TypeError: text must be a string
+
+-------------------------------------------------------------------------------
+
+>>> text_indentation()
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+TypeError: text_indentation() missing 1 required positional argument: 'text'
+
+-------------------------------------------------------------------------------
+
+>>> text_indentation('hola', 1)
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+TypeError: text_indentation() takes 1 positional argument but 2 were given
+
+-------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
