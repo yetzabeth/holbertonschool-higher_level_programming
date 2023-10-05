@@ -6,7 +6,7 @@ class Rectangle:
     '''Defines new instance of the class'''
     def __init__(self, width=0, height=0):
         self.width = width
-        self.heigth = heigth
+        self.height = height
 
     @property
     def width(self):
