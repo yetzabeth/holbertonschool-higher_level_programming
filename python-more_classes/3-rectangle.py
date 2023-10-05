@@ -23,14 +23,14 @@ class Rectangle:
             return per
 
     def __str__(self):
-        print_rect = ''
+        print_rec = ''
         if self.width == 0 or self.height == 0:
             return ''
         for i in range(self.height):
             for j in range(self.width):
-                print_rect += '#'
-            print_rect += '\n'
-        temp = print_rect[:-1]
+                print_rec += '#'
+            print_rec += '\n'
+        temp = print_rec[:-1]
         return temp
 
     @property
