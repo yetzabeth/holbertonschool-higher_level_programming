@@ -11,7 +11,7 @@ class Rectangle:
     def __init__(self, width=0, height=0):
         self.width = width
         self.height = height
-    
+
     def area(self):
         return self.width * self.height
 
@@ -21,7 +21,18 @@ class Rectangle:
         else:
             per = (self.width * 2) + (self.height * 2)
             return per
-            
+
+    def __str__(self):
+        print_rect = ''
+        if self.width == o or self.height == 0:
+            return ''
+        for i in range(self.height):
+            for j in range(self.width):
+                print_rect += '#'
+            print_rect += '\n'
+        temp = print_rect[:-1]
+        return temp
+
     @property
     def width(self):
         """
