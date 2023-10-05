@@ -24,7 +24,7 @@ class Rectangle:
 
     def __str__(self):
         print_rect = ''
-        if self.width == o or self.height == 0:
+        if self.width == 0 or self.height == 0:
             return ''
         for i in range(self.height):
             for j in range(self.width):
