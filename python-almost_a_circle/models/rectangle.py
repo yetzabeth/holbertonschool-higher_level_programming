@@ -1,11 +1,15 @@
 #!/usr/bin/python3
-''' Write the class Rectangle that inherits from Base  '''
+"""
+Module that creates a class 'Rectangle' that inherits from class 'Base'
+"""
 from models.base import Base
 
 
 class Rectangle(Base):
-    ''' Rectangle class  '''
+    """ New class, inherits from Base"""
+
     def __init__(self, width, height, x=0, y=0, id=None):
+        """ Constructor that creates a new instance """
         self.width = width
         self.height = height
         self.x = x
@@ -14,114 +18,109 @@ class Rectangle(Base):
 
     @property
     def width(self):
+        """ To get the private width attribute: getter """
         return self.__width
-
-    @property
-    def height(self):
-        return self.__height
-
-    @property
-    def x(self):
-        return self.__x
-
-    @property
-    def y(self):
-        return self.__y
 
     @width.setter
     def width(self, value):
-        if type(value) is not int:
+        """ To set the private width attribute: setter """
+        if type(value) != int:
             raise TypeError("width must be an integer")
         if value <= 0:
             raise ValueError("width must be > 0")
         self.__width = value
 
+    @property
+    def height(self):
+        """ To get the private height attribute: getter """
+        return self.__height
+
     @height.setter
     def height(self, value):
-        if type(value) is not int:
+        """ To set the private height attribute: getter """
+        if type(value) != int:
             raise TypeError("height must be an integer")
         if value <= 0:
             raise ValueError("height must be > 0")
         self.__height = value
 
+    @property
+    def x(self):
+        """ To get the private x attribute: getter """
+        return self.__x
+
     @x.setter
     def x(self, value):
-        if type(value) is not int:
+        """ To set the private x attribute: getter """
+        if type(value) != int:
             raise TypeError("x must be an integer")
         if value < 0:
             raise ValueError("x must be >= 0")
         self.__x = value
 
+    @property
+    def y(self):
+        """ To get the private y attribute: getter """
+        return self.__y
+
     @y.setter
     def y(self, value):
-        if type(value) is not int:
+        """ To set the private y attribute: getter """
+        if type(value) != int:
             raise TypeError("y must be an integer")
         if value < 0:
             raise ValueError("y must be >= 0")
         self.__y = value
 
     def area(self):
-        ''' area of rectangle  '''
-        return self.__height * self.__width
+        """ Calculates the area of a rectangle """
+        return self.__width * self.__height
 
     def display(self):
-        ''' print a rectangle '''
+        """ Prints in stdout the Rectangle instance with the character # """
+        for i in range(self.y):
+            print()
 
-        for y in range(self.__y):
-            print('')
-        for i in range(self.__height):
-            for x in range(self.__x):
-                print(' ', end='')
-            for j in range(self.__width):
-                print('#', end='')
-            print('')
+        for j in range(self.height):
+            print(" " * self.x, end="")
+            print("#" * self.width)
 
     def __str__(self):
-        x = self.__x
-        y = self.__y
-        h = self.__height
-        w = self.__width
-
-        return (f'[Rectangle] ({self.id}) {x}/{y} - {w}/{h}')
+        """ Overrides the __str__ method so that it returns a
+        personalizated message """
+        result = "[Rectangle] ({}) ".format(self.id)
+        result += "{}/{} - ".format(self.x, self.y)
+        result += "{}/{}".format(self.width, self.height)
+        return result
 
     def update(self, *args, **kwargs):
-        '''Update the Rectangle'''
-        if args is not None and len(args) != 0:
-            if len(args) >= 1:
-                if type(args[0]) != int and args[0] is not None:
-                    raise TypeError('id must be an integer')
-                self.id = args[0]
-            if len(args) > 1:
-                self.width = args[1]
-            if len(args) > 2:
-                self.height = args[2]
-            if len(args) > 3:
-                self.x = args[3]
-            if len(args) > 4:
-                self.y = args[4]
+        """ Assigns an argument to each attribute """
+        if len(args) >= 1:
+            self.id = args[0]
+            if len(args) == 2:
+                self.__width = args[1]
+            if len(args) == 3:
+                self.__height = args[2]
+            if len(args) == 4:
+                self.__x = args[3]
+            if len(args) == 5:
+                self.__y = args[4]
         else:
+            # Remember: **kwargs must be skipped if *args exists
+            # and is not empty
             for key, value in kwargs.items():
-                if key == 'id':
-                    if type(value) != int and value is not None:
-                        raise TypeError('id must be an integer')
+                if key == "id":
                     self.id = value
-                if key == 'width':
-                    self.width = value
-                if key == 'height':
-                    self.height = value
-                if key == 'x':
-                    self.x = value
-                if key == 'y':
-                    self.y = value
+                if key == "width":
+                    self.__width = value
+                if key == "height":
+                    self.__height = value
+                if key == "x":
+                    self.__x = value
+                if key == "y":
+                    self.__y = value
 
     def to_dictionary(self):
-        ''' to dict '''
-        x = self.x
-        y = self.y
-        _id = self.id
-        height = self.height
-        width = self.width
-
-        my_dict = {'x': x, 'y': y, 'id': _id, 'height': height, 'width': width}
-
-        return my_dict
+        """ Returns the dictionary representation of a Rectangle """
+        return {'x': self.x, 'y': self.y, 'id': self.id,
+                'height': self.height, 'width': self.width}

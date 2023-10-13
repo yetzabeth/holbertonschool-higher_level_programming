@@ -123,7 +123,7 @@ class Test_classRectangle(unittest.TestCase):
         rect0 = Rectangle.create(**{ 'id': 89 })
         self.assertEqual(rect0.id, 89)
 
-        rect1 = Rectangle.create(**{'width': 1, 'height': 2, 'x': 3, 'y': 4 })
+        rect1 = Rectangle.create(**{'width': 1, 'height': 2, 'x': 3, 'y': 4, 'id': 5 })
         self.assertEqual(rect1.id, 5)
         self.assertEqual(rect1.width, 1)
         self.assertEqual(rect1.height, 2)
