@@ -1,112 +1,60 @@
-IMPORTING MODULE
-	>>> module = __import__('7-base_geometry')
+Test module: def integer_validator(self, name, value)
+------------
+This is an example text file in reStructuredText format.
+------------
 
-IMPORTING FUNCTION
-	>>> BaseGeometry = __import__('7-base_geometry').BaseGeometry
+First import ``integer_validator`` from the ``7-base_geometry`` module:
+>>> BaseGeometry = __import__('7-base_geometry').BaseGeometry
 
-CHECKING CREATE INSTANCE
-	>>> bg = BaseGeometry()
+Try it:
+>>> bg = BaseGeometry()
 
-CHECKING DOCSTRING MODULE
-	>>> len(module.__doc__) > 1
-	True
+>>> bg.area()
+Traceback (most recent call last):
+Exception: area() is not implemented
 
-CHECKING DOCSTRING FUNCTION
-	>>> len(BaseGeometry.__doc__) > 1
-	True
+>>> bg.integer_validator("Belen", 24)
 
-CHECKING TWO STRING
-	>>> bg.integer_validator("name", "John")
-	Traceback (most recent call last):
-	...
-	TypeError: name must be an integer
+>>> bg.integer_validator("string", 3.14)
+Traceback (most recent call last):
+TypeError: string must be an integer
 
-CHECKING STRING INTEGER
-        >>> bg.integer_validator("name", 2)
+>>> bg.integer_validator("string", "not_a_int")
+Traceback (most recent call last):
+TypeError: string must be an integer
 
-CHECKING INT AND STRING
-	>>> bg.integer_validator(2, 2)
+>>> bg.integer_validator("string", 0)
+Traceback (most recent call last):
+ValueError: string must be greater than 0
 
-CHECKING AREA
-	>>> bg.area()
-	Traceback (most recent call last):
-	...
-	Exception: area() is not implemented
+>>> bg.integer_validator("string", -2)
+Traceback (most recent call last):
+ValueError: string must be greater than 0
 
-CHECKING BOOLEAN
-	>>> bg.integer_validator(True, 2)
+>>> bg.integer_validator("Belen")
+Traceback (most recent call last):
+TypeError: integer_validator() missing 1 required positional argument: 'value'
 
-CHECKING BOOLEAN
-	>>> bg.integer_validator("name", True)
-	Traceback (most recent call last):
-	...
-	TypeError: name must be an integer
+>>> bg.integer_validator()
+Traceback (most recent call last):
+TypeError: integer_validator() missing 2 required positional arguments: 'name' and 'value'
 
-CHECKING INTEGER == 0
-	>>> bg.integer_validator("name", 0)
-	Traceback (most recent call last):
-	...
-	ValueError: name must be greater than 0
+>>> bg.integer_validator("string", (4,))
+Traceback (most recent call last):
+TypeError: string must be an integer
 
-CHECKING INTEGER < 0
-	>>> bg.integer_validator("name", 0)
-        Traceback (most recent call last):
-        ...
-        ValueError: name must be greater than 0
+>>> bg.integer_validator("string", [3])
+Traceback (most recent call last):
+TypeError: string must be an integer
 
-CHECKING EMPTY 
-	>>> bg.integer_validator()
-	Traceback (most recent call last):
-	...
-	TypeError: integer_validator() missing 2 required positional arguments: 'name' and 'value'
+>>> bg.integer_validator("string", True)
+Traceback (most recent call last):
+TypeError: string must be an integer
 
-CHECKING None
-	>>> bg.integer_validator(None, None)
-	Traceback (most recent call last):
-	...
-	TypeError: None must be an integer
+>>> bg.integer_validator("string", {1, 2})
+Traceback (most recent call last):
+TypeError: string must be an integer
 
-CHECKING A STRING
-	>>> bg.integer_validator("one")
-	Traceback (most recent call last):
-	...
-	TypeError: integer_validator() missing 1 required positional argument: 'value'
-
-CHECKING NO INT
-	>>> bg.integer_validator("test", (5, 7))
-	Traceback (most recent call last):
-	...
-	TypeError: test must be an integer
-
-CHECKINH EMPTY STRING
-	>>> bg.integer_validator("", 1)
-
-CHECKING AREA FAIL
-	>>> bg.area(1)
-	Traceback (most recent call last):
-        ...
-	TypeError: area() takes 1 positional argument but 2 were given
-
-CHECKING DICT
-	>>> bg.integer_validator("dict", {"key": "value"})
-	Traceback (most recent call last):
-        ...
-        TypeError: dict must be an integer
-
-CHECKING SET
-	>>> bg.integer_validator("set", {"hello", "world"})
-        Traceback (most recent call last):
-        ...
-        TypeError: set must be an integer
-
-CHECKING MANY ARGMENTS
-	>>> bg.integer_validator("more", 1, 2)
-	Traceback (most recent call last):
-        ...
-	TypeError: integer_validator() takes 3 positional arguments but 4 were given
-
-CHECKING LIST
-	>>> bg.integer_validator("list", [1, 2])
-	Traceback (most recent call last):
-        ...
-        TypeError: list must be an integer
+>>> bg.integer_validator("string", None)
+Traceback (most recent call last):
+TypeError: string must be an integer
