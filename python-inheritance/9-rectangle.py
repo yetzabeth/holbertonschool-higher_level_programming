@@ -18,7 +18,6 @@ class BaseGeometry:
         if value <= 0:
             raise ValueError("{} must be greater than 0".format(name))
 
-
 """Rectangle class"""
 
 
@@ -30,11 +29,11 @@ class Rectangle(BaseGeometry):
         self.integer_validator("width", width)
         self.integer_validator("height", height)
         self.__width = width
-        self.__heigth = height
+        self.__height = height
 
     def area(self):
         """Calculates the area of a rectangle"""
-        return self.__width * self.__heigth
+        return self.__width * self.__height
 
     def __str__(self):
-        return print("[Rectangle] {}/{}".format(self.__width, self.__heigth))
+        return "[Rectangle] {}/{}".format(self.__width, self.__height)
