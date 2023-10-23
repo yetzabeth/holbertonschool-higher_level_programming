@@ -18,7 +18,7 @@ class Student():
         if type(attrs) == list:
             new_dict = {}
             for item in attrs:
-                for key, value in self.__dict__.item():
+                for key, value in self.__dict__.items():
                     if key == item:
                         new_dict[item] = value
             return new_dict
