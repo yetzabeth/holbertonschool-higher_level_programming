@@ -10,6 +10,7 @@ if __name__ == "__main__":
     DB_USER = arg[1]
     DB_PASS = arg[2]
     DB_NAME = arg[3]
+    ARG_WORD = arg[4]
 
     data = [DB_HOST, DB_USER, DB_PASS, DB_NAME]
 
