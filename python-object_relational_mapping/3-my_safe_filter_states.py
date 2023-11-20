@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-""" SQL Injection """
+""" Task 3 """
 
 import sys
 import MySQLdb
@@ -22,8 +22,7 @@ if __name__ == "__main__":
 
     # exe query
     query = "SELECT * FROM states WHERE name LIKE %(s)s ORDER BY states.id ASC"
-    
-    
+
     cursor.execute(query, {'s': ARG_WORD})
 
     # Fetch the results of a select
